@@ -1,9 +1,28 @@
 import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronDown, Play, ArrowRight, Dot } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Inline SVG icons (replacing lucide-react)
+const ArrowRight = ({ size = 18 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </svg>
+);
+
+const Play = ({ size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+  </svg>
+);
+
+const Dot = ({ size = 8, fill = "currentColor" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={fill}>
+    <circle cx="12" cy="12" r="10"></circle>
+  </svg>
+);
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
