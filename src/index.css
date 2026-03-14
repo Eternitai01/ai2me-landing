@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply antialiased;
+}
+
+/* Global Noise Overlay */
+html {
+  position: relative;
+}
+
+html::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"></feColorMatrix></filter><rect width="100" height="100" fill="white" filter="url(%23noise)"></rect></svg>');
+  z-index: 9999;
+}
+
+/* Typography */
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-[#0D0D12] text-[#FAF8F5];
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .scale-103 {
+    transform: scale(1.03);
+  }
+
+  /* Gradient Text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-[#C9A84C] to-[#FAF8F5] bg-clip-text text-transparent;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[#0D0D12];
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[#2A2A35] rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-[#C9A84C];
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
